@@ -21,7 +21,7 @@ const registerUser = asyncHandler( async (req,res)=>{
             throw new ApiError(400,"All fields are required")
         }
 
-        User.findOne({$or:[{email},{username}]},(err,user)=>{
+        await User.findOne({$or:[{email},{username}]},(err,user)=>{
             if(err){
                 throw new ApiError(500,"Something went wrong")
             }
